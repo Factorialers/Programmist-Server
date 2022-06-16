@@ -1,6 +1,6 @@
 name: 'Publish Graph'
 on:
-  push:
+  pull_request:
     branches:
       - main
 
