@@ -11,7 +11,9 @@
   },
   "ignorePatterns": ["*.config.js"],
   "rules": {
+    "class-methods-use-this": "off",
     "no-useless-constructor": "off",
+    "import/no-unresolved": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
