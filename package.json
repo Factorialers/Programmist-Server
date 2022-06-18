@@ -24,7 +24,8 @@
     "prisma:migrate": "prisma migrate dev --schema ./src/libs/prisma/schema.prisma",
     "prisma:clear": "prisma db push --accept-data-loss --schema ./src/libs/prisma/schema.prisma",
     "prisma:studio": "prisma studio --schema ./src/libs/prisma/schema.prisma",
-    "apollo:rover": "rover graph publish Programmist-h0lm9@current --schema ./schema.gql"
+    "apollo:rover:current": "rover graph publish Programmist-h0lm9@current --schema ./schema.gql",
+    "apollo:rover:develop": "rover graph publish Programmist-h0lm9@develop --schema ./schema.gql"
   },
   "dependencies": {
     "@nestjs/apollo": "^10.0.14",
