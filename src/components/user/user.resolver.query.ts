@@ -10,7 +10,6 @@ import UserService from './user.service';
 export default class UserQuery {
   constructor(private service: UserService) {}
 
-  // eslint-disable-next-line class-methods-use-this
   @Query(() => String)
   @UseGuards(AuthGuard)
   getAuthorizationHeader(@Context() context): string {
