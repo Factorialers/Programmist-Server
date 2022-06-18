@@ -13,6 +13,36 @@ class EnvValidator {
   APOLLO_KEY: string;
 
   APOLLO_GRAPH_ID: string;
+
+  @IsNotEmpty()
+  FIREBASE_ADMIN_PROJECT_ID: string;
+
+  @IsNotEmpty()
+  FIREBASE_ADMIN_PRIVATE_KEY: string;
+
+  @IsNotEmpty()
+  FIREBASE_ADMIN_CLIENT_EMAIL: string;
+
+  @IsNotEmpty()
+  FIREBASE_API_KEY: string;
+
+  @IsNotEmpty()
+  FIREBASE_AUTH_DOMAIN: string;
+
+  @IsNotEmpty()
+  FIREBASE_PROJECT_ID: string;
+
+  @IsNotEmpty()
+  FIREBASE_STORAGE_BUCKET: string;
+
+  @IsNotEmpty()
+  FIREBASE_SENDER_ID: string;
+
+  @IsNotEmpty()
+  FIREBASE_API_ID: string;
+
+  @IsNotEmpty()
+  FIREBASE_MEASUREMENT_ID: string;
 }
 
 const validate = (config: Record<string, unknown>) => {
