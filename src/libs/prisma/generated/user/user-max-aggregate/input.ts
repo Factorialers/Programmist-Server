@@ -11,8 +11,5 @@ export class UserMaxAggregateInput {
     name?: true;
 
     @Field(() => Boolean, {nullable:true})
-    avatarURL?: true;
-
-    @Field(() => Boolean, {nullable:true})
     createdAt?: true;
 }
