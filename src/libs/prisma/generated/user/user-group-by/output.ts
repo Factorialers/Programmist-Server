@@ -13,9 +13,6 @@ export class UserGroupBy {
     @Field(() => String, {nullable:false})
     name!: string;
 
-    @Field(() => String, {nullable:false})
-    avatarURL!: string;
-
     @Field(() => Date, {nullable:false})
     createdAt!: Date | string;
 

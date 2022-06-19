@@ -11,8 +11,5 @@ export class UserMinAggregateInput {
     name?: true;
 
     @Field(() => Boolean, {nullable:true})
-    avatarURL?: true;
-
-    @Field(() => Boolean, {nullable:true})
     createdAt?: true;
 }
