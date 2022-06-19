@@ -15,7 +15,7 @@ export default class Env {
   }
 
   get Port(): number {
-    const port = this.configService.getOrThrow<number>('PORT');
+    const port = this.configService.get<number>('PORT', 3000);
 
     return port;
   }
