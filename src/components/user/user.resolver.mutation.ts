@@ -15,7 +15,7 @@ export default class UserMutation {
 
   @Mutation(() => User)
   async createUser(@Args() args: CreateOneUserArgs) {
-    const user = this.service.create(args);
+    const user = await this.service.create(args);
 
     return user;
   }
@@ -26,8 +26,8 @@ export default class UserMutation {
       throw new Error('where.idは必須のプロパティです。');
     }
 
-    const user = this.service.update(args);
-    this.firebaseService.adminAuth.updateUser(args.where.id, { displayName: args.data.name?.set });
+    const user = await this.service.update(args);
+    await this.firebaseService.adminAuth.updateUser(args.where.id, { displayName: args.data.name?.set });
 
     return user;
   }
@@ -38,8 +38,8 @@ export default class UserMutation {
       throw new Error('where.idは必須のプロパティです。');
     }
 
-    const user = this.service.delete(args);
-    this.firebaseService.adminAuth.deleteUser(args.where.id);
+    const user = await this.service.delete(args);
+    await this.firebaseService.adminAuth.deleteUser(args.where.id);
 
     return user;
   }
