@@ -17,7 +17,7 @@ export default class UserQuery {
 
   @Query(() => [User])
   async findUsers(@Args() args: FindManyUserArgs): Promise<User[]> {
-    const users = this.service.findUsers(args);
+    const users = await this.service.findUsers(args);
 
     return users;
   }
