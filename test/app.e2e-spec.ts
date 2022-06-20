@@ -112,4 +112,42 @@ describe('E2E Test', () => {
     console.log(deletedUser.data);
     console.log(deletedUser.errors);
   });
+
+  test('AuthGuard', async () => {
+    const testUserRecord = await adminAuth.createUser({
+      displayName: 'e2e-test-user',
+      email: `e2e-test-user${Date.parse(Date())}@gmail.com`,
+      password: 'e2e-test-user',
+    });
+    const testCustomToken = await adminAuth.createCustomToken(testUserRecord.uid);
+    const testUserCredential = await signInWithCustomToken(auth, testCustomToken);
+    const testUser = testUserCredential.user;
+    const testToken = await testUser.getIdToken();
+
+    const createdUser = await request(app.getHttpServer())
+      .mutate(
+        gql`
+          mutation CreateUser($data: UserCreateInput!) {
+            createUser(data: $data) {
+              id
+              name
+              createdAt
+            }
+          }
+        `,
+      )
+      .variables({
+        data: {
+          id: 'invalid-fake-uid',
+          name: testUser.displayName,
+        },
+      })
+      .set('authorization', testToken);
+
+    expect(createdUser.data).toEqual(null);
+    console.log(createdUser.data);
+    console.log(createdUser.errors);
+
+    adminAuth.deleteUser(testUser.uid);
+  });
 });
