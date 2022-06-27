@@ -27,7 +27,7 @@ export default class UserMutation {
     }
 
     const user = await this.service.update(args);
-    await this.firebaseService.adminAuth.updateUser(args.where.id, { displayName: args.data.name?.set });
+    await this.firebaseService.adminAuth.updateUser(args.where.id, { displayName: args.data.name });
 
     return user;
   }

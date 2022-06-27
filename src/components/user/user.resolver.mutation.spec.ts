@@ -35,9 +35,9 @@ describe('User Mutation Resolver Test', () => {
     mockedUserService.update.mockResolvedValue(fakeUser);
 
     const expectUser = fakeUser;
-    await expect(
-      userQuery.updateUser({ where: { id: expectUser.id }, data: { id: { set: expectUser.id }, name: { set: expectUser.name } } }),
-    ).resolves.toEqual(expectUser);
+    await expect(userQuery.updateUser({ where: { id: expectUser.id }, data: { id: expectUser.id, name: expectUser.name } })).resolves.toEqual(
+      expectUser,
+    );
   });
 
   test('deleteUser', async () => {
