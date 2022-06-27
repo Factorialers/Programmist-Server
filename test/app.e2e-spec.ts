@@ -179,6 +179,6 @@ describe('E2E Test', () => {
     console.log(createdUser.data);
     console.log(createdUser.errors);
 
-    adminAuth.deleteUser(testUser.uid);
+    await adminAuth.deleteUser(testUser.uid);
   });
 });
