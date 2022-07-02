@@ -31,8 +31,8 @@ export class WorkCreateInput {
     @Field(() => Date, {nullable:true})
     updatedAt?: Date | string;
 
-    @Field(() => Date, {nullable:false})
-    publishedAt!: Date | string;
+    @Field(() => Date, {nullable:true})
+    publishedAt?: Date | string;
 
     @Field(() => Boolean, {nullable:true})
     isPublish?: boolean;

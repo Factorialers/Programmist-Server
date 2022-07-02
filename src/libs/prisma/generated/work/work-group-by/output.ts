@@ -31,8 +31,8 @@ export class WorkGroupBy {
     @Field(() => Date, {nullable:false})
     updatedAt!: Date | string;
 
-    @Field(() => Date, {nullable:false})
-    publishedAt!: Date | string;
+    @Field(() => Date, {nullable:true})
+    publishedAt?: Date | string;
 
     @Field(() => Boolean, {nullable:false})
     isPublish!: boolean;

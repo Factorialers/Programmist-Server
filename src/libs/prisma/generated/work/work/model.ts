@@ -30,8 +30,8 @@ export class Work {
     @Field(() => Date, {nullable:false})
     updatedAt!: Date;
 
-    @Field(() => Date, {nullable:false})
-    publishedAt!: Date;
+    @Field(() => Date, {nullable:true})
+    publishedAt!: Date | null;
 
     @Field(() => Boolean, {nullable:false,defaultValue:false})
     isPublish!: boolean;

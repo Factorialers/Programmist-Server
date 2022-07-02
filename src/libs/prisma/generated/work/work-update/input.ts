@@ -4,6 +4,7 @@ import { StringFieldUpdateOperationsInput } from '../../prisma/string-field-upda
 import { WorkUpdatetagsInput } from '../work-updatetags/input';
 import { WorkUpdatesourceCodeURLInput } from '../work-updatesource-code-url/input';
 import { DateTimeFieldUpdateOperationsInput } from '../../prisma/date-time-field-update-operations/input';
+import { NullableDateTimeFieldUpdateOperationsInput } from '../../prisma/nullable-date-time-field-update-operations/input';
 import { BoolFieldUpdateOperationsInput } from '../../prisma/bool-field-update-operations/input';
 import { UserUpdateOneRequiredWithoutWorksInput } from '../../user/user-update-one-required-without-works/input';
 
@@ -34,8 +35,8 @@ export class WorkUpdateInput {
     @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
     updatedAt?: DateTimeFieldUpdateOperationsInput;
 
-    @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
-    publishedAt?: DateTimeFieldUpdateOperationsInput;
+    @Field(() => NullableDateTimeFieldUpdateOperationsInput, {nullable:true})
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput;
 
     @Field(() => BoolFieldUpdateOperationsInput, {nullable:true})
     isPublish?: BoolFieldUpdateOperationsInput;
