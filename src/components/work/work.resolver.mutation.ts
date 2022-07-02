@@ -1,10 +1,10 @@
 import { UseGuards } from '@nestjs/common';
 import { Resolver, Mutation, Args } from '@nestjs/graphql';
 import AuthGuard from '../../guards/auth.guard';
-import { CreateOneWorkArgs } from '../../libs/prisma/generated/work/create-one-work/args';
-import { DeleteOneWorkArgs } from '../../libs/prisma/generated/work/delete-one-work/args';
-import { UpdateOneWorkArgs } from '../../libs/prisma/generated/work/update-one-work/args';
-import { Work } from '../../libs/prisma/generated/work/work/model';
+import CreateWorkArgs from './type/args/createWork';
+import DeleteWorkArgs from './type/args/deleteWork';
+import UpdateWorkArgs from './type/args/updateWork';
+import Work from './type/model';
 import WorkService from './work.service';
 
 @Resolver()
@@ -13,21 +13,26 @@ export default class WorkMutation {
   constructor(private service: WorkService) {}
 
   @Mutation(() => Work)
-  async createWork(@Args() args: CreateOneWorkArgs) {
-    const work = await this.service.create(args);
+  async createWork(@Args() args: CreateWorkArgs) {
+    const work = await this.service.create({
+      data: {
+        ...args.data,
+        user: { connect: { id: args.data.userId } },
+      },
+    });
 
     return work;
   }
 
   @Mutation(() => Work)
-  async updateWork(@Args() args: UpdateOneWorkArgs) {
+  async updateWork(@Args() args: UpdateWorkArgs) {
     const work = await this.service.update(args);
 
     return work;
   }
 
   @Mutation(() => Work)
-  async deleteWork(@Args() args: DeleteOneWorkArgs) {
+  async deleteWork(@Args() args: DeleteWorkArgs) {
     const work = await this.service.delete(args);
 
     return work;

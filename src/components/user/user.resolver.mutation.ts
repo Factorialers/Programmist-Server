@@ -2,10 +2,10 @@ import { UseGuards } from '@nestjs/common';
 import { Resolver, Mutation, Args } from '@nestjs/graphql';
 import AuthGuard from '../../guards/auth.guard';
 import FirebaseService from '../../libs/firebase/firebase.service';
-import { CreateOneUserArgs } from '../../libs/prisma/generated/user/create-one-user/args';
-import { DeleteOneUserArgs } from '../../libs/prisma/generated/user/delete-one-user/args';
-import { UpdateOneUserArgs } from '../../libs/prisma/generated/user/update-one-user/args';
-import { User } from '../../libs/prisma/generated/user/user/model';
+import CreateUserArgs from './type/args/createUser';
+import DeleteUserArgs from './type/args/deleteUser';
+import UpdateUserArgs from './type/args/updateUser';
+import User from './type/model';
 import UserService from './user.service';
 
 @Resolver()
@@ -14,30 +14,27 @@ export default class UserMutation {
   constructor(private firebaseService: FirebaseService, private service: UserService) {}
 
   @Mutation(() => User)
-  async createUser(@Args() args: CreateOneUserArgs) {
-    const user = await this.service.create(args);
+  async createUser(@Args() args: CreateUserArgs) {
+    const user = await this.service.create({
+      data: {
+        ...args.data,
+        works: { connect: args.data.works },
+      },
+    });
 
     return user;
   }
 
   @Mutation(() => User)
-  async updateUser(@Args() args: UpdateOneUserArgs) {
-    if (!args.where.id) {
-      throw new Error('where.idは必須のプロパティです。');
-    }
-
+  async updateUser(@Args() args: UpdateUserArgs) {
     const user = await this.service.update(args);
-    await this.firebaseService.adminAuth.updateUser(args.where.id, { displayName: args.data.name?.set });
+    await this.firebaseService.adminAuth.updateUser(args.where.id, { displayName: args.data.name });
 
     return user;
   }
 
   @Mutation(() => User)
-  async deleteUser(@Args() args: DeleteOneUserArgs) {
-    if (!args.where.id) {
-      throw new Error('where.idは必須のプロパティです。');
-    }
-
+  async deleteUser(@Args() args: DeleteUserArgs) {
     const user = await this.service.delete(args);
     await this.firebaseService.adminAuth.deleteUser(args.where.id);
 

@@ -9,7 +9,7 @@ import AppModule from '../src/app/app.module';
 import FirebaseModule from '../src/libs/firebase/firebase.module';
 import FirebaseService from '../src/libs/firebase/firebase.service';
 
-describe('E2E Test', () => {
+describe('User E2E Test', () => {
   let app: INestApplication;
   let firebaseModule: INestApplicationContext;
   let auth: Auth;
@@ -40,6 +40,11 @@ describe('E2E Test', () => {
             findUsers {
               id
               name
+              works {
+                id
+                title
+                userId
+              }
               createdAt
             }
           }
@@ -48,8 +53,8 @@ describe('E2E Test', () => {
       .expectNoErrors();
 
     expect(response.status).toBe(200);
-    console.log(data);
-    console.log(errors);
+    console.dir(data);
+    console.dir(errors);
   });
 
   test('createUser, updateUser, deleteUser', async () => {
@@ -70,6 +75,11 @@ describe('E2E Test', () => {
             createUser(data: $data) {
               id
               name
+              works {
+                id
+                title
+                userId
+              }
               createdAt
             }
           }
@@ -85,8 +95,8 @@ describe('E2E Test', () => {
       .expectNoErrors();
 
     expect(createdUser.response.status).toBe(200);
-    console.log(createdUser.data);
-    console.log(createdUser.errors);
+    console.dir(createdUser.data);
+    console.dir(createdUser.errors);
 
     const updatedUser = await request(app.getHttpServer())
       .mutate(
@@ -95,6 +105,11 @@ describe('E2E Test', () => {
             updateUser(data: $data, where: $where) {
               id
               name
+              works {
+                id
+                title
+                userId
+              }
               createdAt
             }
           }
@@ -102,7 +117,7 @@ describe('E2E Test', () => {
       )
       .variables({
         data: {
-          name: { set: `updated ${testUser.displayName}` },
+          name: `updated ${testUser.displayName}`,
         },
         where: {
           id: testUser.uid,
@@ -112,8 +127,8 @@ describe('E2E Test', () => {
       .expectNoErrors();
 
     expect(updatedUser.response.status).toBe(200);
-    console.log(updatedUser.data);
-    console.log(updatedUser.errors);
+    console.dir(updatedUser.data);
+    console.dir(updatedUser.errors);
 
     const deletedUser = await request(app.getHttpServer())
       .mutate(
@@ -122,6 +137,11 @@ describe('E2E Test', () => {
             deleteUser(where: $where) {
               id
               name
+              works {
+                id
+                title
+                userId
+              }
               createdAt
             }
           }
@@ -136,8 +156,8 @@ describe('E2E Test', () => {
       .expectNoErrors();
 
     expect(deletedUser.response.status).toBe(200);
-    console.log(deletedUser.data);
-    console.log(deletedUser.errors);
+    console.dir(deletedUser.data);
+    console.dir(deletedUser.errors);
   });
 
   test('AuthGuard', async () => {
@@ -158,6 +178,11 @@ describe('E2E Test', () => {
             createUser(data: $data) {
               id
               name
+              works {
+                id
+                title
+                userId
+              }
               createdAt
             }
           }
@@ -172,8 +197,8 @@ describe('E2E Test', () => {
       .set('authorization', testToken);
 
     expect(createdUser.data).toEqual(null);
-    console.log(createdUser.data);
-    console.log(createdUser.errors);
+    console.dir(createdUser.data);
+    console.dir(createdUser.errors);
 
     adminAuth.deleteUser(testUser.uid);
   });

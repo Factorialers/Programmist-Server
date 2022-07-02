@@ -18,32 +18,33 @@ describe('User Mutation Resolver Test', () => {
     const fakeUser = {
       id: 'abc-123',
       name: 'yukarisan-lover',
+      works: [],
       createdAt: new Date(),
     };
     mockedUserService.create.mockResolvedValue(fakeUser);
 
     const expectUser = fakeUser;
-    await expect(userQuery.createUser({ data: { id: expectUser.id, name: expectUser.name } })).resolves.toEqual(expectUser);
+    await expect(userQuery.createUser({ data: { id: expectUser.id, name: expectUser.name, works: [] } })).resolves.toEqual(expectUser);
   });
 
   test('updateUser', async () => {
     const fakeUser = {
       id: 'abc-123',
       name: 'yukarisan-lover',
+      works: [],
       createdAt: new Date(),
     };
     mockedUserService.update.mockResolvedValue(fakeUser);
 
     const expectUser = fakeUser;
-    await expect(
-      userQuery.updateUser({ where: { id: expectUser.id }, data: { id: { set: expectUser.id }, name: { set: expectUser.name } } }),
-    ).resolves.toEqual(expectUser);
+    await expect(userQuery.updateUser({ where: { id: expectUser.id }, data: { name: expectUser.name } })).resolves.toEqual(expectUser);
   });
 
   test('deleteUser', async () => {
     const fakeUser = {
       id: 'abc-123',
       name: 'yukarisan-lover',
+      works: [],
       createdAt: new Date(),
     };
     mockedUserService.delete.mockResolvedValue(fakeUser);

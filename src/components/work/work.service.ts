@@ -11,6 +11,7 @@ export default class WorkService {
 
     return this.prisma.work.findUnique({
       where,
+      include: { user: { include: { works: true } } },
     });
   }
 
@@ -31,6 +32,7 @@ export default class WorkService {
       cursor,
       orderBy,
       distinct,
+      include: { user: { include: { works: true } } },
     });
   }
 
@@ -39,6 +41,7 @@ export default class WorkService {
 
     return this.prisma.work.create({
       data,
+      include: { user: { include: { works: true } } },
     });
   }
 
@@ -48,6 +51,7 @@ export default class WorkService {
     return this.prisma.work.update({
       where,
       data,
+      include: { user: { include: { works: true } } },
     });
   }
 
@@ -56,6 +60,7 @@ export default class WorkService {
 
     return this.prisma.work.delete({
       where,
+      include: { user: { include: { works: true } } },
     });
   }
 }

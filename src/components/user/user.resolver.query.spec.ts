@@ -15,6 +15,7 @@ describe('User Query Resolver Test', () => {
     const fakeUser = {
       id: 'abc-123',
       name: 'yukarisan-lover',
+      works: [],
       createdAt: new Date(),
     };
     mockedUserService.findUser.mockResolvedValue(fakeUser);
@@ -28,11 +29,13 @@ describe('User Query Resolver Test', () => {
       {
         id: 'abc-123',
         name: 'yukarisan-lover',
+        works: [],
         createdAt: new Date(),
       },
       {
         id: 'abc-124',
         name: 'mikusan-lover',
+        works: [],
         createdAt: new Date(),
       },
     ];
