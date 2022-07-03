@@ -200,6 +200,6 @@ describe('User E2E Test', () => {
     console.dir(createdUser.data);
     console.dir(createdUser.errors);
 
-    adminAuth.deleteUser(testUser.uid);
+    await adminAuth.deleteUser(testUser.uid);
   });
 });
