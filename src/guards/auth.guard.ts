@@ -23,11 +23,22 @@ export default class AuthGuard implements CanActivate {
       if (arg && arg.authorization) {
         authorization = arg.authorization;
       }
-      if (arg && arg.data && arg.data.id) {
-        uid = arg.data.id;
+
+      if (arg && arg.data) {
+        if (arg.data.id) {
+          uid = arg.data.id;
+        }
+        if (arg.data.userId) {
+          uid = arg.data.userId;
+        }
       }
-      if (arg && arg.where && arg.where.id) {
-        uid = arg.where.id;
+      if (arg && arg.where) {
+        if (arg.where.id) {
+          uid = arg.where.id;
+        }
+        if (arg.where.userId) {
+          uid = arg.where.userId;
+        }
       }
     });
 
