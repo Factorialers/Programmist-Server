@@ -1,5 +1,5 @@
 import { ArgsType, Field } from '@nestjs/graphql';
-import WorkRelatedUserWhere from '../input/WorkRelatedUserWhere';
+import WorkRelatedUserWhere from '../input/workRelatedUserWhere';
 import WorkUpdateInput from '../input/workUpdate';
 
 @ArgsType()
