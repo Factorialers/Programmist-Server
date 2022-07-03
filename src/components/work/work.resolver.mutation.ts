@@ -16,7 +16,12 @@ export default class WorkMutation {
   async createWork(@Args() args: CreateWorkArgs) {
     const work = await this.service.create({
       data: {
-        ...args.data,
+        title: args.data.title,
+        tags: args.data.tags,
+        logoURL: args.data.logoURL,
+        readmeURL: args.data.readmeURL,
+        sourceCodeURL: args.data.sourceCodeURL,
+        isPublish: args.data.isPublish,
         user: { connect: { id: args.data.userId } },
       },
     });
@@ -26,14 +31,22 @@ export default class WorkMutation {
 
   @Mutation(() => Work)
   async updateWork(@Args() args: UpdateWorkArgs) {
-    const work = await this.service.update(args);
+    const work = await this.service.update({
+      data: {
+        title: args.data.title,
+        tags: args.data.tags,
+        sourceCodeURL: args.data.sourceCodeURL,
+        isPublish: args.data.isPublish,
+      },
+      where: { id: args.where.id },
+    });
 
     return work;
   }
 
   @Mutation(() => Work)
   async deleteWork(@Args() args: DeleteWorkArgs) {
-    const work = await this.service.delete(args);
+    const work = await this.service.delete({ where: { id: args.where.id } });
 
     return work;
   }
