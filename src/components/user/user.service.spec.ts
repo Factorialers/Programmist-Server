@@ -51,7 +51,7 @@ describe('User DB Service Test', () => {
   test('update', async () => {
     const fakeUser = {
       id: 'abc-123',
-      name: 'mikusan-lover',
+      name: 'yukarisan-lover',
       createdAt: new Date(),
     };
     mockContext.prisma.user.update.mockResolvedValue(fakeUser);
@@ -63,10 +63,10 @@ describe('User DB Service Test', () => {
   test('delete', async () => {
     const fakeUser = {
       id: 'abc-123',
-      name: 'mikusan-lover',
+      name: 'yukarisan-lover',
       createdAt: new Date(),
     };
-    mockContext.prisma.user.delete.mockResolvedValue(fakeUser);
+    mockContext.prisma.$transaction.mockResolvedValue([{ count: 0 }, fakeUser]);
 
     const expectUser = fakeUser;
     await expect(userService.delete({ where: { id: expectUser.id } })).resolves.toEqual(expectUser);
