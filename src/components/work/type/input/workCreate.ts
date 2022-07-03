@@ -21,7 +21,7 @@ export default class WorkCreateInput {
   createdAt?: Date;
 
   @Field(() => Date, { nullable: true })
-  publishedAt?: Date;
+  publishedAt?: Date | null;
 
   @Field(() => Boolean, { nullable: true, defaultValue: false })
   isPublish: boolean;
