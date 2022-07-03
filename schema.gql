@@ -254,6 +254,7 @@ input WorkCreateInput {
   readmeURL: String!
   sourceCodeURL: [String!]!
   createdAt: DateTime
+  publishedAt: DateTime
   isPublish: Boolean = false
   userId: String!
 }
