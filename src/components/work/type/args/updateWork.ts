@@ -1,11 +1,11 @@
 import { ArgsType, Field } from '@nestjs/graphql';
+import WorkRelatedUserWhere from '../input/WorkRelatedUserWhere';
 import WorkUpdateInput from '../input/workUpdate';
-import WorkWhereUniqueInput from '../input/workWhereUnique';
 
 @ArgsType()
 export default class UpdateWorkArgs {
-  @Field(() => WorkWhereUniqueInput, { nullable: false })
-  where: WorkWhereUniqueInput;
+  @Field(() => WorkRelatedUserWhere, { nullable: false })
+  where: WorkRelatedUserWhere;
 
   @Field(() => WorkUpdateInput, { nullable: false })
   data: WorkUpdateInput;

@@ -218,8 +218,8 @@ type Mutation {
   updateUser(where: UserWhereUniqueInput!, data: UserUpdateInput!): User!
   deleteUser(where: UserWhereUniqueInput!): User!
   createWork(data: WorkCreateInput!): Work!
-  updateWork(where: WorkWhereUniqueInput!, data: WorkUpdateInput!): Work!
-  deleteWork(where: WorkWhereUniqueInput!): Work!
+  updateWork(where: WorkRelatedUserWhere!, data: WorkUpdateInput!): Work!
+  deleteWork(where: WorkRelatedUserWhere!): Work!
 }
 
 input UserCreateInput {
@@ -255,6 +255,11 @@ input WorkCreateInput {
   sourceCodeURL: [String!]!
   createdAt: DateTime
   isPublish: Boolean = false
+  userId: String!
+}
+
+input WorkRelatedUserWhere {
+  id: String!
   userId: String!
 }
 

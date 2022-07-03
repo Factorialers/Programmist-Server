@@ -1,8 +1,8 @@
 import { ArgsType, Field } from '@nestjs/graphql';
-import WorkWhereUniqueInput from '../input/workWhereUnique';
+import WorkRelatedUserWhere from '../input/WorkRelatedUserWhere';
 
 @ArgsType()
 export default class DeleteWorkArgs {
-  @Field(() => WorkWhereUniqueInput, { nullable: false })
-  where: WorkWhereUniqueInput;
+  @Field(() => WorkRelatedUserWhere, { nullable: false })
+  where: WorkRelatedUserWhere;
 }
