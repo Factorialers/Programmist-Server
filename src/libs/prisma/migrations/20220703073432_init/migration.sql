@@ -17,7 +17,7 @@ CREATE TABLE "works" (
     "source_code_url" TEXT[],
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
-    "published_at" TIMESTAMP(3) NOT NULL,
+    "published_at" TIMESTAMP(3),
     "is_publish" BOOLEAN NOT NULL DEFAULT false,
     "userId" TEXT NOT NULL,
 
