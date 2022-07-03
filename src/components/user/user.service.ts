@@ -64,8 +64,8 @@ export default class UserService {
       include: { works: { include: { user: true } } },
     });
 
-    const deletedUser =  await this.prisma.$transaction([deleteWorks, deleteUser]);
+    const [, deletedUser] = await this.prisma.$transaction([deleteWorks, deleteUser]);
 
-    return deletedUser[1];
+    return deletedUser;
   }
 }
