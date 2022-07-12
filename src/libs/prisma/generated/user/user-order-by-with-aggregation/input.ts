@@ -15,9 +15,6 @@ export class UserOrderByWithAggregationInput {
     name?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
-    avatarURL?: keyof typeof SortOrder;
-
-    @Field(() => SortOrder, {nullable:true})
     createdAt?: keyof typeof SortOrder;
 
     @Field(() => UserCountOrderByAggregateInput, {nullable:true})

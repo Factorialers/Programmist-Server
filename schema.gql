@@ -56,8 +56,6 @@ input NestedStringFilter {
 type Query {
   findUserById(where: UserWhereUniqueInput!): User
   findUsers(cursor: UserWhereUniqueInput, distinct: [UserScalarFieldEnum!], orderBy: [UserOrderByWithRelationInput!], skip: Int, take: Int, where: UserWhereInput): [User!]!
-  getAllUsers: [User!]!
-  getAuthorizationHeader: String!
 }
 
 enum QueryMode {
@@ -90,35 +88,30 @@ input StringFilter {
 }
 
 type User {
-  avatarURL: String!
   createdAt: DateTime!
   id: ID!
   name: String!
 }
 
 input UserCreateInput {
-  avatarURL: String!
   createdAt: DateTime
-  id: String
+  id: String!
   name: String!
 }
 
 input UserOrderByWithRelationInput {
-  avatarURL: SortOrder
   createdAt: SortOrder
   id: SortOrder
   name: SortOrder
 }
 
 enum UserScalarFieldEnum {
-  avatarURL
   createdAt
   id
   name
 }
 
 input UserUpdateInput {
-  avatarURL: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
@@ -128,7 +121,6 @@ input UserWhereInput {
   AND: [UserWhereInput!]
   NOT: [UserWhereInput!]
   OR: [UserWhereInput!]
-  avatarURL: StringFilter
   createdAt: DateTimeFilter
   id: StringFilter
   name: StringFilter

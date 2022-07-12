@@ -1,8 +1,8 @@
-name: 'Publish Graph'
+name: 'Publish Graph to Develop'
 on:
   pull_request:
     branches:
-      - main
+      - develop
 
 jobs:
   publish-graph:
@@ -19,4 +19,4 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Publish Graph
-        run: yarn apollo:rover
+        run: yarn apollo:rover:develop

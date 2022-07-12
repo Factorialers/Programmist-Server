@@ -11,9 +11,6 @@ export class UserCountAggregateInput {
     name?: true;
 
     @Field(() => Boolean, {nullable:true})
-    avatarURL?: true;
-
-    @Field(() => Boolean, {nullable:true})
     createdAt?: true;
 
     @Field(() => Boolean, {nullable:true})

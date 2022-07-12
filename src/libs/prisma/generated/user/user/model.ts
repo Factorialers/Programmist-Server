@@ -11,9 +11,6 @@ export class User {
     @Field(() => String, {nullable:false})
     name!: string;
 
-    @Field(() => String, {nullable:false})
-    avatarURL!: string;
-
     @Field(() => Date, {nullable:false})
     createdAt!: Date;
 }

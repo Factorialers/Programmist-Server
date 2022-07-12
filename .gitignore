@@ -37,3 +37,6 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
+
+# firebase admin secret keys
+programmist-c0b3c-firebase-adminsdk-*.json

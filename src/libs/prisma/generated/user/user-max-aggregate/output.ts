@@ -10,9 +10,6 @@ export class UserMaxAggregate {
     @Field(() => String, {nullable:true})
     name?: string;
 
-    @Field(() => String, {nullable:true})
-    avatarURL?: string;
-
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;
 }

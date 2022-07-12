@@ -21,9 +21,6 @@ export class UserWhereInput {
     @Field(() => StringFilter, {nullable:true})
     name?: StringFilter;
 
-    @Field(() => StringFilter, {nullable:true})
-    avatarURL?: StringFilter;
-
     @Field(() => DateTimeFilter, {nullable:true})
     createdAt?: DateTimeFilter;
 }
