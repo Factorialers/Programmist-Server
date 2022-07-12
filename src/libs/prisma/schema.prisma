@@ -3,9 +3,13 @@ generator client {
 }
 
 generator nestgraphql {
-  provider          = "prisma-nestjs-graphql"
-  output            = "./generated"
-  outputFilePattern = "{model}/{name}/{type}.ts"
+  provider                              = "prisma-nestjs-graphql"
+  output                                = "./generated"
+  outputFilePattern                     = "{model}/{name}/{type}.ts"
+  noAtomicOperations                    = true
+  purgeOutput                           = true
+  noTypeId                              = true
+  requireSingleFieldsInWhereUniqueInput = ture
 }
 
 datasource db {
