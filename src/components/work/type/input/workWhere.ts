@@ -33,6 +33,9 @@ export default class WorkWhereInput {
   @Field(() => StringFilter, { nullable: true })
   readmeURL?: StringFilter;
 
+  @Field(() => StringFilter, { nullable: true })
+  licenseURL?: StringFilter;
+
   @Field(() => StringNullableListFilter, { nullable: true })
   sourceCodeURL?: StringNullableListFilter;
 

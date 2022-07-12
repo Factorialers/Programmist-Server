@@ -8,6 +8,12 @@ export default class WorkUpdateInput {
   @Field(() => [String], { nullable: true })
   tags?: string[];
 
+  @Field(() => String, { nullable: true })
+  logoURL?: string;
+
+  @Field(() => String, { nullable: true })
+  licenseURL?: string;
+
   @Field(() => [String], { nullable: true })
   sourceCodeURL?: string[];
 

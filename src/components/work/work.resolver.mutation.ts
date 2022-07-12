@@ -20,6 +20,7 @@ export default class WorkMutation {
         tags: args.data.tags,
         logoURL: args.data.logoURL,
         readmeURL: args.data.readmeURL,
+        licenseURL: args.data.licenseURL,
         sourceCodeURL: args.data.sourceCodeURL,
         isPublish: args.data.isPublish,
         user: { connect: { id: args.data.userId } },
@@ -35,6 +36,8 @@ export default class WorkMutation {
       data: {
         title: args.data.title,
         tags: args.data.tags,
+        logoURL: args.data.logoURL,
+        licenseURL: args.data.licenseURL,
         sourceCodeURL: args.data.sourceCodeURL,
         isPublish: args.data.isPublish,
       },

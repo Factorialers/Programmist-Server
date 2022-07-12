@@ -110,6 +110,7 @@ describe('Work E2E Test', () => {
           title: 'work title',
           tags: ['tag-A', 'tag-B'],
           logoURL: 'logo-url',
+          licenseURL: 'license-url',
           readmeURL: 'readme-url',
           sourceCodeURL: 'source-code-url',
           userId: testUser.uid,

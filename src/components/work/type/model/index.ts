@@ -18,6 +18,9 @@ export default class Work {
   @Field(() => String, { nullable: false })
   readmeURL: string;
 
+  @Field(() => String, { nullable: false })
+  licenseURL: string;
+
   @Field(() => [String], { nullable: false })
   sourceCodeURL: string[];
 
