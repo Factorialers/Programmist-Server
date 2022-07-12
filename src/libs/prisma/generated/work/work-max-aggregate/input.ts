@@ -17,6 +17,9 @@ export class WorkMaxAggregateInput {
     readmeURL?: true;
 
     @Field(() => Boolean, {nullable:true})
+    licenseURL?: true;
+
+    @Field(() => Boolean, {nullable:true})
     createdAt?: true;
 
     @Field(() => Boolean, {nullable:true})

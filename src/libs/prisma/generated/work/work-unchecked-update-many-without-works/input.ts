@@ -25,6 +25,9 @@ export class WorkUncheckedUpdateManyWithoutWorksInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     readmeURL?: StringFieldUpdateOperationsInput;
 
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    licenseURL?: StringFieldUpdateOperationsInput;
+
     @Field(() => WorkUpdatesourceCodeURLInput, {nullable:true})
     sourceCodeURL?: WorkUpdatesourceCodeURLInput;
 

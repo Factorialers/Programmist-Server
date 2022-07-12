@@ -14,6 +14,7 @@ CREATE TABLE "works" (
     "tags" TEXT[],
     "logo_url" TEXT NOT NULL,
     "readme_url" TEXT NOT NULL,
+    "license_url" TEXT NOT NULL,
     "source_code_url" TEXT[],
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,

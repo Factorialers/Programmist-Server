@@ -22,6 +22,9 @@ export class WorkGroupBy {
     @Field(() => String, {nullable:false})
     readmeURL!: string;
 
+    @Field(() => String, {nullable:false})
+    licenseURL!: string;
+
     @Field(() => [String], {nullable:true})
     sourceCodeURL?: Array<string>;
 

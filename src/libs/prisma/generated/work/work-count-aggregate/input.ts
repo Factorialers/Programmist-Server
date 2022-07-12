@@ -20,6 +20,9 @@ export class WorkCountAggregateInput {
     readmeURL?: true;
 
     @Field(() => Boolean, {nullable:true})
+    licenseURL?: true;
+
+    @Field(() => Boolean, {nullable:true})
     sourceCodeURL?: true;
 
     @Field(() => Boolean, {nullable:true})

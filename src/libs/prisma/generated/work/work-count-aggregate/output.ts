@@ -21,6 +21,9 @@ export class WorkCountAggregate {
     readmeURL!: number;
 
     @Field(() => Int, {nullable:false})
+    licenseURL!: number;
+
+    @Field(() => Int, {nullable:false})
     sourceCodeURL!: number;
 
     @Field(() => Int, {nullable:false})

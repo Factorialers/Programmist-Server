@@ -16,6 +16,9 @@ export class WorkMinAggregate {
     @Field(() => String, {nullable:true})
     readmeURL?: string;
 
+    @Field(() => String, {nullable:true})
+    licenseURL?: string;
+
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;
 

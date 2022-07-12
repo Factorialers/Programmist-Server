@@ -21,6 +21,9 @@ export class WorkCreateManyInput {
     @Field(() => String, {nullable:false})
     readmeURL!: string;
 
+    @Field(() => String, {nullable:false})
+    licenseURL!: string;
+
     @Field(() => WorkCreatesourceCodeURLInput, {nullable:true})
     sourceCodeURL?: WorkCreatesourceCodeURLInput;
 

@@ -28,6 +28,7 @@ model Work {
   tags          String[]
   logoURL       String    @map("logo_url")
   readmeURL     String    @map("readme_url")
+  licenseURL    String    @map("license_url")
   sourceCodeURL String[]  @map("source_code_url")
   createdAt     DateTime  @default(now()) @map("created_at")
   updatedAt     DateTime  @updatedAt() @map("updated_at")

@@ -18,6 +18,9 @@ export class WorkMaxOrderByAggregateInput {
     readmeURL?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
+    licenseURL?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
     createdAt?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})

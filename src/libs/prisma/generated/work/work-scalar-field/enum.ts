@@ -6,6 +6,7 @@ export enum WorkScalarFieldEnum {
     tags = "tags",
     logoURL = "logoURL",
     readmeURL = "readmeURL",
+    licenseURL = "licenseURL",
     sourceCodeURL = "sourceCodeURL",
     createdAt = "createdAt",
     updatedAt = "updatedAt",

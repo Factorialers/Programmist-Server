@@ -33,6 +33,9 @@ export class WorkScalarWhereWithAggregatesInput {
     @Field(() => StringWithAggregatesFilter, {nullable:true})
     readmeURL?: StringWithAggregatesFilter;
 
+    @Field(() => StringWithAggregatesFilter, {nullable:true})
+    licenseURL?: StringWithAggregatesFilter;
+
     @Field(() => StringNullableListFilter, {nullable:true})
     sourceCodeURL?: StringNullableListFilter;
 

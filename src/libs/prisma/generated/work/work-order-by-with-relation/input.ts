@@ -22,6 +22,9 @@ export class WorkOrderByWithRelationInput {
     readmeURL?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
+    licenseURL?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
     sourceCodeURL?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
