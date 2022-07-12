@@ -92,7 +92,6 @@ describe('User E2E Test', () => {
         },
       })
       .set('authorization', testToken)
-      .set('uid', testUser.uid)
       .expectNoErrors();
 
     expect(createdUser.response.status).toBe(200);
@@ -125,7 +124,6 @@ describe('User E2E Test', () => {
         },
       })
       .set('authorization', testToken)
-      .set('uid', testUser.uid)
       .expectNoErrors();
 
     expect(updatedUser.response.status).toBe(200);
@@ -155,7 +153,6 @@ describe('User E2E Test', () => {
         },
       })
       .set('authorization', testToken)
-      .set('uid', testUser.uid)
       .expectNoErrors();
 
     expect(deletedUser.response.status).toBe(200);
@@ -198,7 +195,6 @@ describe('User E2E Test', () => {
         },
       })
       .set('authorization', testToken)
-      .set('uid', 'invalid-fake-uid');
 
     expect(createdUser.data).toEqual(null);
     console.dir(createdUser.data);
