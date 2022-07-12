@@ -14,7 +14,6 @@ describe('User DB Service Test', () => {
     const fakeUser = {
       id: 'abc-123',
       name: 'yukarisan-lover',
-      avatarURL: 'https://www.example.com/icon.png',
       createdAt: new Date(),
     };
     mockContext.prisma.user.findUnique.mockResolvedValue(fakeUser);
@@ -28,7 +27,6 @@ describe('User DB Service Test', () => {
       {
         id: 'abc-123',
         name: 'yukarisan-lover',
-        avatarURL: 'https://www.example.com/icon.png',
         createdAt: new Date(),
       },
     ];
@@ -42,7 +40,6 @@ describe('User DB Service Test', () => {
     const fakeUser = {
       id: 'abc-123',
       name: 'yukarisan-lover',
-      avatarURL: 'https://www.example.com/icon.png',
       createdAt: new Date(),
     };
     mockContext.prisma.user.create.mockResolvedValue(fakeUser);
@@ -54,8 +51,7 @@ describe('User DB Service Test', () => {
   test('update', async () => {
     const fakeUser = {
       id: 'abc-123',
-      name: 'mikusan-lover',
-      avatarURL: 'https://www.example.com/icon.png',
+      name: 'yukarisan-lover',
       createdAt: new Date(),
     };
     mockContext.prisma.user.update.mockResolvedValue(fakeUser);
@@ -67,11 +63,10 @@ describe('User DB Service Test', () => {
   test('delete', async () => {
     const fakeUser = {
       id: 'abc-123',
-      name: 'mikusan-lover',
-      avatarURL: 'https://www.example.com/icon.png',
+      name: 'yukarisan-lover',
       createdAt: new Date(),
     };
-    mockContext.prisma.user.delete.mockResolvedValue(fakeUser);
+    mockContext.prisma.$transaction.mockResolvedValue([{ count: 0 }, fakeUser]);
 
     const expectUser = fakeUser;
     await expect(userService.delete({ where: { id: expectUser.id } })).resolves.toEqual(expectUser);

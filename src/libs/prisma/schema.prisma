@@ -20,7 +20,27 @@ datasource db {
 model User {
   id        String   @id
   name      String
+  works     Work[]
   createdAt DateTime @default(now()) @map("created_at")
 
   @@map("users")
+}
+
+model Work {
+  id            String    @id @default(uuid())
+  title         String
+  tags          String[]
+  logoURL       String    @map("logo_url")
+  readmeURL     String    @map("readme_url")
+  licenseURL    String    @map("license_url")
+  sourceCodeURL String[]  @map("source_code_url")
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt() @map("updated_at")
+  publishedAt   DateTime? @map("published_at")
+  isPublish     Boolean   @default(false) @map("is_publish")
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  @@map("works")
 }

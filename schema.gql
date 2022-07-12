@@ -2,14 +2,15 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input BoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
 """
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
-
-input DateTimeFieldUpdateOperationsInput {
-  set: DateTime
-}
 
 input DateTimeFilter {
   equals: DateTime
@@ -22,10 +23,29 @@ input DateTimeFilter {
   notIn: [DateTime!]
 }
 
+input DateTimeNullableFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: NestedDateTimeNullableFilter
+  notIn: [DateTime!]
+}
+
 type Mutation {
   createUser(data: UserCreateInput!): User!
+  createWork(data: WorkCreateInput!): Work!
   deleteUser(where: UserWhereUniqueInput!): User!
+  deleteWork(where: WorkRelatedUserWhere!): Work!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+  updateWork(data: WorkUpdateInput!, where: WorkRelatedUserWhere!): Work!
+}
+
+input NestedBoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
 }
 
 input NestedDateTimeFilter {
@@ -36,6 +56,17 @@ input NestedDateTimeFilter {
   lt: DateTime
   lte: DateTime
   not: NestedDateTimeFilter
+  notIn: [DateTime!]
+}
+
+input NestedDateTimeNullableFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: NestedDateTimeNullableFilter
   notIn: [DateTime!]
 }
 
@@ -53,9 +84,26 @@ input NestedStringFilter {
   startsWith: String
 }
 
+type NestedWork {
+  createdAt: DateTime!
+  id: String!
+  isPublish: Boolean!
+  licenseURL: String!
+  logoURL: String!
+  publishedAt: DateTime
+  readmeURL: String!
+  sourceCodeURL: [String!]!
+  tags: [String!]!
+  title: String!
+  updatedAt: DateTime!
+  userId: String!
+}
+
 type Query {
   findUserById(where: UserWhereUniqueInput!): User
-  findUsers(cursor: UserWhereUniqueInput, distinct: [UserScalarFieldEnum!], orderBy: [UserOrderByWithRelationInput!], skip: Int, take: Int, where: UserWhereInput): [User!]!
+  findUsers(cursor: UserWhereUniqueInput, orderBy: [UserOrderInput!], skip: Int, take: Int, where: UserWhereInput): [User!]!
+  findWorkById(where: WorkWhereUniqueInput!): Work
+  findWorks(cursor: WorkWhereUniqueInput, orderBy: [WorkOrderInput!], skip: Int, take: Int, where: WorkWhereInput): [Work!]!
 }
 
 enum QueryMode {
@@ -66,10 +114,6 @@ enum QueryMode {
 enum SortOrder {
   asc
   desc
-}
-
-input StringFieldUpdateOperationsInput {
-  set: String
 }
 
 input StringFilter {
@@ -87,34 +131,41 @@ input StringFilter {
   startsWith: String
 }
 
+input StringNullableListFilter {
+  equals: [String!]
+  has: String
+  hasEvery: [String!]
+  hasSome: [String!]
+  isEmpty: Boolean
+}
+
 type User {
   createdAt: DateTime!
-  id: ID!
+  id: String!
   name: String!
+  works: [NestedWork!]!
 }
 
 input UserCreateInput {
   createdAt: DateTime
   id: String!
   name: String!
+  works: [WorkInput!] = []
 }
 
-input UserOrderByWithRelationInput {
+input UserOrderInput {
   createdAt: SortOrder
   id: SortOrder
   name: SortOrder
 }
 
-enum UserScalarFieldEnum {
-  createdAt
-  id
-  name
+input UserRelationFilter {
+  is: UserWhereInput
+  isNot: UserWhereInput
 }
 
 input UserUpdateInput {
-  createdAt: DateTimeFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  name: StringFieldUpdateOperationsInput
+  name: String!
 }
 
 input UserWhereInput {
@@ -124,8 +175,105 @@ input UserWhereInput {
   createdAt: DateTimeFilter
   id: StringFilter
   name: StringFilter
+  works: WorkListRelationFilter
 }
 
 input UserWhereUniqueInput {
-  id: String
+  id: String!
+}
+
+type Work {
+  createdAt: DateTime!
+  id: String!
+  isPublish: Boolean!
+  licenseURL: String!
+  logoURL: String!
+  publishedAt: DateTime
+  readmeURL: String!
+  sourceCodeURL: [String!]!
+  tags: [String!]!
+  title: String!
+  updatedAt: DateTime!
+  user: User!
+  userId: String!
+}
+
+input WorkCreateInput {
+  createdAt: DateTime
+  isPublish: Boolean = false
+  licenseURL: String!
+  logoURL: String!
+  publishedAt: DateTime
+  readmeURL: String!
+  sourceCodeURL: [String!]!
+  tags: [String!]!
+  title: String!
+  userId: String!
+}
+
+input WorkInput {
+  createdAt: DateTime!
+  id: String!
+  isPublish: Boolean!
+  licenseURL: String!
+  logoURL: String!
+  publishedAt: DateTime!
+  readmeURL: String!
+  sourceCodeURL: [String!]!
+  tags: [String!]!
+  title: String!
+  updatedAt: DateTime!
+  userId: String!
+}
+
+input WorkListRelationFilter {
+  every: WorkWhereInput
+  none: WorkWhereInput
+  some: WorkWhereInput
+}
+
+input WorkOrderInput {
+  createdAt: SortOrder
+  id: SortOrder
+  isPublish: SortOrder
+  publishedAt: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
+}
+
+input WorkRelatedUserWhere {
+  id: String!
+  userId: String!
+}
+
+input WorkUpdateInput {
+  isPublish: Boolean
+  licenseURL: String
+  logoURL: String
+  sourceCodeURL: [String!]
+  tags: [String!]
+  title: String
+}
+
+input WorkWhereInput {
+  AND: [WorkWhereInput!]
+  NOT: [WorkWhereInput!]
+  OR: [WorkWhereInput!]
+  createdAt: DateTimeFilter
+  id: StringFilter
+  isPublish: BoolFilter
+  licenseURL: StringFilter
+  logoURL: StringFilter
+  publishedAt: DateTimeNullableFilter
+  readmeURL: StringFilter
+  sourceCodeURL: StringNullableListFilter
+  tags: StringNullableListFilter
+  title: StringFilter
+  updatedAt: DateTimeFilter
+  user: UserRelationFilter
+  userId: StringFilter
+}
+
+input WorkWhereUniqueInput {
+  id: String!
 }

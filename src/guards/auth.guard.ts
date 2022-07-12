@@ -20,12 +20,24 @@ export default class AuthGuard implements CanActivate {
     let authorization: string | undefined;
     let uid: string | undefined;
     context.getArgs().forEach((arg) => {
-      if (arg && arg.req && arg.req.headers) {
-        if (arg.req.headers.authorization) {
-          authorization = arg.req.headers.authorization;
+      if (arg && arg.authorization) {
+        authorization = arg.authorization;
+      }
+
+      if (arg && arg.data) {
+        if (arg.data.id) {
+          uid = arg.data.id;
         }
-        if (arg.req.headers.uid) {
-          uid = arg.req.headers.uid;
+        if (arg.data.userId) {
+          uid = arg.data.userId;
+        }
+      }
+      if (arg && arg.where) {
+        if (arg.where.id) {
+          uid = arg.where.id;
+        }
+        if (arg.where.userId) {
+          uid = arg.where.userId;
         }
       }
     });

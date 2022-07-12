@@ -11,6 +11,7 @@ export default class UserService {
 
     return this.prisma.user.findUnique({
       where,
+      include: { works: { include: { user: true } } },
     });
   }
 
@@ -31,6 +32,7 @@ export default class UserService {
       cursor,
       orderBy,
       distinct,
+      include: { works: { include: { user: true } } },
     });
   }
 
@@ -39,6 +41,7 @@ export default class UserService {
 
     return this.prisma.user.create({
       data,
+      include: { works: { include: { user: true } } },
     });
   }
 
@@ -48,14 +51,21 @@ export default class UserService {
     return this.prisma.user.update({
       where,
       data,
+      include: { works: { include: { user: true } } },
     });
   }
 
   async delete(args: { where: Prisma.UserWhereUniqueInput }) {
     const { where } = args;
 
-    return this.prisma.user.delete({
+    const deleteWorks = this.prisma.work.deleteMany({ where: { userId: where.id } });
+    const deleteUser = this.prisma.user.delete({
       where,
+      include: { works: { include: { user: true } } },
     });
+
+    const [, deletedUser] = await this.prisma.$transaction([deleteWorks, deleteUser]);
+
+    return deletedUser;
   }
 }
