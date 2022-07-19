@@ -13,6 +13,9 @@ jobs:
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
 
+      - name: Prisma Generate
+        run: yarn prisma:gen
+
       - name: Lint
         run: yarn lint --max-warnings=0
 
@@ -41,6 +44,9 @@ jobs:
 
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
+
+      - name: Prisma Generate
+        run: yarn prisma:gen
 
       - name: Unit Test
         run: yarn test
