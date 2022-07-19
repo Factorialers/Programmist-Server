@@ -13,12 +13,12 @@ generator nestgraphql {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id        String   @id
+  id        String   @id @map("_id")
   name      String
   works     Work[]
   createdAt DateTime @default(now()) @map("created_at")
@@ -27,7 +27,7 @@ model User {
 }
 
 model Work {
-  id            String    @id @default(uuid())
+  id            String    @id @default(uuid()) @map("_id")
   title         String
   tags          String[]
   logoURL       String    @map("logo_url")

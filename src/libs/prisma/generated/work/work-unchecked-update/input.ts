@@ -1,48 +1,39 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
-import { StringFieldUpdateOperationsInput } from '../../prisma/string-field-update-operations/input';
-import { WorkUpdatetagsInput } from '../work-updatetags/input';
-import { WorkUpdatesourceCodeURLInput } from '../work-updatesource-code-url/input';
-import { DateTimeFieldUpdateOperationsInput } from '../../prisma/date-time-field-update-operations/input';
-import { NullableDateTimeFieldUpdateOperationsInput } from '../../prisma/nullable-date-time-field-update-operations/input';
-import { BoolFieldUpdateOperationsInput } from '../../prisma/bool-field-update-operations/input';
 
 @InputType()
 export class WorkUncheckedUpdateInput {
 
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    id?: StringFieldUpdateOperationsInput;
+    @Field(() => String, {nullable:true})
+    title?: string;
 
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    title?: StringFieldUpdateOperationsInput;
+    @Field(() => [String], {nullable:true})
+    tags?: Array<string>;
 
-    @Field(() => WorkUpdatetagsInput, {nullable:true})
-    tags?: WorkUpdatetagsInput;
+    @Field(() => String, {nullable:true})
+    logoURL?: string;
 
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    logoURL?: StringFieldUpdateOperationsInput;
+    @Field(() => String, {nullable:true})
+    readmeURL?: string;
 
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    readmeURL?: StringFieldUpdateOperationsInput;
+    @Field(() => String, {nullable:true})
+    licenseURL?: string;
 
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    licenseURL?: StringFieldUpdateOperationsInput;
+    @Field(() => [String], {nullable:true})
+    sourceCodeURL?: Array<string>;
 
-    @Field(() => WorkUpdatesourceCodeURLInput, {nullable:true})
-    sourceCodeURL?: WorkUpdatesourceCodeURLInput;
+    @Field(() => Date, {nullable:true})
+    createdAt?: Date | string;
 
-    @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
-    createdAt?: DateTimeFieldUpdateOperationsInput;
+    @Field(() => Date, {nullable:true})
+    updatedAt?: Date | string;
 
-    @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
-    updatedAt?: DateTimeFieldUpdateOperationsInput;
+    @Field(() => Date, {nullable:true})
+    publishedAt?: Date | string;
 
-    @Field(() => NullableDateTimeFieldUpdateOperationsInput, {nullable:true})
-    publishedAt?: NullableDateTimeFieldUpdateOperationsInput;
+    @Field(() => Boolean, {nullable:true})
+    isPublish?: boolean;
 
-    @Field(() => BoolFieldUpdateOperationsInput, {nullable:true})
-    isPublish?: BoolFieldUpdateOperationsInput;
-
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    userId?: StringFieldUpdateOperationsInput;
+    @Field(() => String, {nullable:true})
+    userId?: string;
 }

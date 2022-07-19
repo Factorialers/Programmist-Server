@@ -1,7 +1,5 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
-import { WorkCreatetagsInput } from '../work-createtags/input';
-import { WorkCreatesourceCodeURLInput } from '../work-createsource-code-url/input';
 
 @InputType()
 export class WorkCreateManyInput {
@@ -12,8 +10,8 @@ export class WorkCreateManyInput {
     @Field(() => String, {nullable:false})
     title!: string;
 
-    @Field(() => WorkCreatetagsInput, {nullable:true})
-    tags?: WorkCreatetagsInput;
+    @Field(() => [String], {nullable:true})
+    tags?: Array<string>;
 
     @Field(() => String, {nullable:false})
     logoURL!: string;
@@ -24,8 +22,8 @@ export class WorkCreateManyInput {
     @Field(() => String, {nullable:false})
     licenseURL!: string;
 
-    @Field(() => WorkCreatesourceCodeURLInput, {nullable:true})
-    sourceCodeURL?: WorkCreatesourceCodeURLInput;
+    @Field(() => [String], {nullable:true})
+    sourceCodeURL?: Array<string>;
 
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;

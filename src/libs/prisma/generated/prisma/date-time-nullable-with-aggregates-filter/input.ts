@@ -39,4 +39,7 @@ export class DateTimeNullableWithAggregatesFilter {
 
     @Field(() => NestedDateTimeNullableFilter, {nullable:true})
     _max?: NestedDateTimeNullableFilter;
+
+    @Field(() => Boolean, {nullable:true})
+    isSet?: boolean;
 }

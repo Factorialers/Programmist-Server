@@ -1,12 +1,11 @@
 import { Field } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
-import { ID } from '@nestjs/graphql';
 import { User } from '../../user/user/model';
 
 @ObjectType()
 export class Work {
 
-    @Field(() => ID, {nullable:false})
+    @Field(() => String, {nullable:false})
     id!: string;
 
     @Field(() => String, {nullable:false})

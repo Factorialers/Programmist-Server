@@ -27,4 +27,7 @@ export class NestedDateTimeNullableFilter {
 
     @Field(() => NestedDateTimeNullableFilter, {nullable:true})
     not?: NestedDateTimeNullableFilter;
+
+    @Field(() => Boolean, {nullable:true})
+    isSet?: boolean;
 }

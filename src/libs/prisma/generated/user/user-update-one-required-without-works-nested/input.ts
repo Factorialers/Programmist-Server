@@ -8,7 +8,7 @@ import { UserWhereUniqueInput } from '../user-where-unique/input';
 import { UserUpdateWithoutWorksInput } from '../user-update-without-works/input';
 
 @InputType()
-export class UserUpdateOneRequiredWithoutWorksInput {
+export class UserUpdateOneRequiredWithoutWorksNestedInput {
 
     @Field(() => UserCreateWithoutWorksInput, {nullable:true})
     @Type(() => UserCreateWithoutWorksInput)
