@@ -9,6 +9,8 @@ import AppModule from '../src/app/app.module';
 import FirebaseModule from '../src/libs/firebase/firebase.module';
 import FirebaseService from '../src/libs/firebase/firebase.service';
 
+jest.setTimeout(15000);
+
 describe('User E2E Test', () => {
   let app: INestApplication;
   let firebaseModule: INestApplicationContext;
@@ -194,7 +196,7 @@ describe('User E2E Test', () => {
           name: testUser.displayName,
         },
       })
-      .set('authorization', testToken)
+      .set('authorization', testToken);
 
     expect(createdUser.data).toEqual(null);
     console.dir(createdUser.data);

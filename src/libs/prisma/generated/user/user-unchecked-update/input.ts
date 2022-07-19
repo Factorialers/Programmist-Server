@@ -1,21 +1,16 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
-import { StringFieldUpdateOperationsInput } from '../../prisma/string-field-update-operations/input';
-import { WorkUncheckedUpdateManyWithoutUserInput } from '../../work/work-unchecked-update-many-without-user/input';
-import { DateTimeFieldUpdateOperationsInput } from '../../prisma/date-time-field-update-operations/input';
+import { WorkUncheckedUpdateManyWithoutUserNestedInput } from '../../work/work-unchecked-update-many-without-user-nested/input';
 
 @InputType()
 export class UserUncheckedUpdateInput {
 
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    id?: StringFieldUpdateOperationsInput;
+    @Field(() => String, {nullable:true})
+    name?: string;
 
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    name?: StringFieldUpdateOperationsInput;
+    @Field(() => WorkUncheckedUpdateManyWithoutUserNestedInput, {nullable:true})
+    works?: WorkUncheckedUpdateManyWithoutUserNestedInput;
 
-    @Field(() => WorkUncheckedUpdateManyWithoutUserInput, {nullable:true})
-    works?: WorkUncheckedUpdateManyWithoutUserInput;
-
-    @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
-    createdAt?: DateTimeFieldUpdateOperationsInput;
+    @Field(() => Date, {nullable:true})
+    createdAt?: Date | string;
 }

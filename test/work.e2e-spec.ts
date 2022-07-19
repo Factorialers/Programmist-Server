@@ -11,6 +11,8 @@ import UserMutation from '../src/components/user/user.resolver.mutation';
 import FirebaseModule from '../src/libs/firebase/firebase.module';
 import FirebaseService from '../src/libs/firebase/firebase.service';
 
+jest.setTimeout(15000);
+
 describe('Work E2E Test', () => {
   let app: INestApplication;
   let firebaseModule: INestApplicationContext;

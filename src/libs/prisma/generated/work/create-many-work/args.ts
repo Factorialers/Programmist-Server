@@ -9,7 +9,4 @@ export class CreateManyWorkArgs {
     @Field(() => [WorkCreateManyInput], {nullable:false})
     @Type(() => WorkCreateManyInput)
     data!: Array<WorkCreateManyInput>;
-
-    @Field(() => Boolean, {nullable:true})
-    skipDuplicates?: boolean;
 }

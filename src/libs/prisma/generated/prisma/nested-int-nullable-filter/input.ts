@@ -28,4 +28,7 @@ export class NestedIntNullableFilter {
 
     @Field(() => NestedIntNullableFilter, {nullable:true})
     not?: NestedIntNullableFilter;
+
+    @Field(() => Boolean, {nullable:true})
+    isSet?: boolean;
 }

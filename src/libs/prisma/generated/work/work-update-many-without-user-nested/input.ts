@@ -11,7 +11,7 @@ import { WorkUpdateManyWithWhereWithoutUserInput } from '../work-update-many-wit
 import { WorkScalarWhereInput } from '../work-scalar-where/input';
 
 @InputType()
-export class WorkUpdateManyWithoutUserInput {
+export class WorkUpdateManyWithoutUserNestedInput {
 
     @Field(() => [WorkCreateWithoutUserInput], {nullable:true})
     @Type(() => WorkCreateWithoutUserInput)

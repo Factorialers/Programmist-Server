@@ -28,6 +28,7 @@ input DateTimeNullableFilter {
   gt: DateTime
   gte: DateTime
   in: [DateTime!]
+  isSet: Boolean
   lt: DateTime
   lte: DateTime
   not: NestedDateTimeNullableFilter
@@ -64,6 +65,7 @@ input NestedDateTimeNullableFilter {
   gt: DateTime
   gte: DateTime
   in: [DateTime!]
+  isSet: Boolean
   lt: DateTime
   lte: DateTime
   not: NestedDateTimeNullableFilter

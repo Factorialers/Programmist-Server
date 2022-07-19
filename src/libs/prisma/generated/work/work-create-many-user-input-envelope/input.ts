@@ -9,7 +9,4 @@ export class WorkCreateManyUserInputEnvelope {
     @Field(() => [WorkCreateManyUserInput], {nullable:false})
     @Type(() => WorkCreateManyUserInput)
     data!: Array<WorkCreateManyUserInput>;
-
-    @Field(() => Boolean, {nullable:true})
-    skipDuplicates?: boolean;
 }
