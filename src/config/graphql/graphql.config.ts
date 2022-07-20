@@ -14,6 +14,7 @@ const GraphQLConfigDevelop = () =>
     driver: ApolloDriver,
     path: '/graphql',
     introspection: true,
+    cache: 'bounded',
     autoSchemaFile: join(process.cwd(), './schema.gql'),
     sortSchema: true,
     playground: false,
@@ -28,6 +29,7 @@ export const GraphQLConfigProduction = () =>
     driver: ApolloDriver,
     path: '/graphql',
     introspection: true,
+    cache: 'bounded',
     autoSchemaFile: join(process.cwd(), './schema.gql'),
     sortSchema: true,
     playground: false,
@@ -39,6 +41,7 @@ const GraphQLConfigTest = () =>
   GraphQLModule.forRoot<ApolloDriverConfig>({
     driver: ApolloDriver,
     path: '/graphql',
+    cache: 'bounded',
     autoSchemaFile: join(process.cwd(), './schema.gql'),
     playground: false,
     context: ({ req }: { req: Request }) => ({ authorization: req.headers.authorization }),
